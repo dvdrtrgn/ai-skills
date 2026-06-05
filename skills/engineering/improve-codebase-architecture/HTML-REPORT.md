@@ -75,6 +75,13 @@ Use a Mermaid `flowchart` or `graph` when the point is "X calls Y calls Z, and l
 </div>
 ```
 
+### Mermaid pitfalls
+
+- **Node styling:** `class C leak` assigns a `classDef` name — it does NOT accept inline `fill:`/`stroke:` directly.
+  To style a specific node by property, use `style C fill:#dc2626` instead.
+- **Special chars in labels:** `[ ] ( ) : >` break the parser unless quoted.
+  Use `A["Order (new)"]` for node labels; use `-->|"text with colons"|` for edge labels.
+
 ### Hand-built boxes-and-arrows (when Mermaid's layout fights you)
 
 Modules as `<div>`s with borders and labels. Arrows as inline SVG `<line>` or `<path>` elements positioned absolutely over a relative container. Reach for this when you want the "after" diagram to feel like one thick-bordered deep module with greyed-out internals — Mermaid won't render that with the right weight.
